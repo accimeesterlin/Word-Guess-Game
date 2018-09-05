@@ -26,6 +26,11 @@ var currentWordText = document.getElementById("currentWord");
 var guessesLeftText = document.getElementById("guessesLeft");
 var guessesSoFarText = document.getElementById("guessesSoFar");
 
+function replaceAt(string, index, replace) {
+    return string.substring(0, index) + replace + string.substring(index + 1);
+}
+replaceAt();
+
 //onkeyup for the user variable
 document.onkeyup = function (event) {
 
@@ -46,7 +51,8 @@ document.onkeyup = function (event) {
         var letter = computerGuess[i];
 
         if (userGuess === letter) {
-            console.log("HELLO");
+            var word = underscore.replaceAt(" _ ", 1, letter);
+            console.log(word);
         }
     }
     guessesLeft--;
@@ -58,5 +64,7 @@ document.onkeyup = function (event) {
     // //     computer();
     // // }
 
-    // guessesSoFarText.textContent = "Guesses So Far: " + guessesSoFar
+    guessesSoFarText.textContent = "Guesses So Far: " + guessesSoFar.join(", ");
 };
+
+
