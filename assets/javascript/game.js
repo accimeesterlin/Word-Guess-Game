@@ -5,7 +5,7 @@ var wins = 0;
 //initialization variables
 var guessesLeft = 13;
 var guessesSoFar = [];
-var currentWord = [];
+// var currentWord = [];
 
 //hagman words
 // function computer() {
@@ -14,9 +14,10 @@ var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.l
 console.log(computerGuess);
 var wordLength = computerGuess.length;
 console.log(wordLength);
-// var underscore = " _ ".repeat(wordLength);
-// console.log(underscore);
 var underscore = [];
+console.log(underscore);
+var under = " _ ".repeat(wordLength);
+underscore.push(under);
 console.log(underscore);
 
 // }
@@ -29,9 +30,6 @@ var currentWordText = document.getElementById("currentWord");
 var guessesLeftText = document.getElementById("guessesLeft");
 var guessesSoFarText = document.getElementById("guessesSoFar");
 
-function replaceAt(string, index, replace) {
-    return string.substring(0, index) + replace + string.substring(index + 1);
-}
 
 //onkeyup for the user variable
 document.onkeyup = function (event) {
@@ -55,9 +53,10 @@ document.onkeyup = function (event) {
         if (userGuess === letter) {
             var position = computerGuess.indexOf(letter);
             underscore[position] = userGuess;
-            console.log(underscore);
+            // console.log(underscore);
         }
     }
+
     guessesLeft--;
     console.log(guessesLeft);
 
@@ -67,6 +66,7 @@ document.onkeyup = function (event) {
     // //     computer();
     // // }
 
+    currentWordText.textContent = "Current Word: " + underscore.join(" ");
     guessesSoFarText.textContent = "Guesses So Far: " + guessesSoFar.join(", ");
 };
 
