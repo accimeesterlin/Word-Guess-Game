@@ -29,7 +29,6 @@ var guessesSoFarText = document.getElementById("guessesSoFar");
 function replaceAt(string, index, replace) {
     return string.substring(0, index) + replace + string.substring(index + 1);
 }
-replaceAt();
 
 //onkeyup for the user variable
 document.onkeyup = function (event) {
@@ -51,7 +50,9 @@ document.onkeyup = function (event) {
         var letter = computerGuess[i];
 
         if (userGuess === letter) {
-            var word = underscore.replaceAt(" _ ", 1, letter);
+            var position = computerGuess.indexOf(letter);
+            console.log(position);
+            var word = underscore.replaceAt(" _ ", position, letter);
             console.log(word);
         }
     }
