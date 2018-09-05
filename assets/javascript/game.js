@@ -1,40 +1,44 @@
 
 //variables
 var wins = 0;
+
+//initialization variables
+function init () {
 var guessesLeft = 13;
 var guessesSoFar = [];
 var j = 0;
-// create a string instead of an array
 var currentWord = [];
+}
+init();
 
 //hagman words
-
 function computer() {
 var computerChoices = ["venezuela", "finland", "russia", "greece", "brazil", "mexico", "argentina", "turkey", "japan", "sweden", "dubai", "china", "peru", "germany", "chile", "thailand", "india", "switzerland"];
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)].split("");
 console.log(computerGuess);
 var wordLength = computerGuess.length;
 console.log(wordLength);
+var underscore = "_".repeat(wordLength);
+console.log(underscore);
 }
-
-//call the function
+//call the function computer
 computer();
 
-// // variables to hold references
-// var winsText = document.getElementById("wins");
-// var currentWordText = document.getElementById("currentWord");
-// var guessesLeftText = document.getElementById("guessesLeft");
-// var guessesSoFarText = document.getElementById("guessesSoFar");
+// variables to hold references
+var winsText = document.getElementById("wins");
+var currentWordText = document.getElementById("currentWord");
+var guessesLeftText = document.getElementById("guessesLeft");
+var guessesSoFarText = document.getElementById("guessesSoFar");
 
-// //onkeyup for the user variable
-// document.onkeyup = function (event) {
+//onkeyup for the user variable
+document.onkeyup = function (event) {
 
-//     //user letter choice
-//     var userChoice = event.key;
+    //user letter choice
+    var userChoice = event.key;
 
-//     // All letters must be lower case to compare
-//     var userGuess = userChoice.toLowerCase();
-//     console.log(userGuess);
+    // All letters must be lower case to compare
+    var userGuess = userChoice.toLowerCase();
+    console.log(userGuess);
 
 //     //Array for guesses so far will display as Upper Case.
 //     // var guessesUpper = userChoice.toUpperCase();
@@ -87,6 +91,6 @@ computer();
 //     currentWordText.textContent = "Current Word: " + currentWord.join(" ");
 //     guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
 //     guessesSoFarText.textContent = "Guesses So Far: " + guessesSoFar.join(", ");
-// };
+};
 
 
