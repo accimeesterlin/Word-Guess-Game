@@ -18,7 +18,7 @@ var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.l
 console.log(computerGuess);
 var wordLength = computerGuess.length;
 console.log(wordLength);
-var underscore = "_".repeat(wordLength);
+var underscore = " _ ".repeat(wordLength);
 console.log(underscore);
 }
 //call the function computer
