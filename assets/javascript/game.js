@@ -8,77 +8,85 @@ var j = 0;
 var currentWord = [];
 
 //hagman words
+
+function computer() {
 var computerChoices = ["venezuela", "finland", "russia", "greece", "brazil", "mexico", "argentina", "turkey", "japan", "sweden", "dubai", "china", "peru", "germany", "chile", "thailand", "india", "switzerland"];
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)].split("");
 console.log(computerGuess);
+var wordLength = computerGuess.length;
+console.log(wordLength);
+}
 
-// variables to hold references
-var winsText = document.getElementById("wins");
-var currentWordText = document.getElementById("currentWord");
-var guessesLeftText = document.getElementById("guessesLeft");
-var guessesSoFarText = document.getElementById("guessesSoFar");
+//call the function
+computer();
 
-//onkeyup for the user variable
-document.onkeyup = function (event) {
+// // variables to hold references
+// var winsText = document.getElementById("wins");
+// var currentWordText = document.getElementById("currentWord");
+// var guessesLeftText = document.getElementById("guessesLeft");
+// var guessesSoFarText = document.getElementById("guessesSoFar");
 
-    //user letter choice
-    var userChoice = event.key;
+// //onkeyup for the user variable
+// document.onkeyup = function (event) {
 
-    // All letters must be lower case to compare
-    var userGuess = userChoice.toLowerCase();
-    console.log(userGuess);
+//     //user letter choice
+//     var userChoice = event.key;
 
-    //Array for guesses so far will display as Upper Case.
-    // var guessesUpper = userChoice.toUpperCase();
-    guessesSoFar.push(userGuess);
+//     // All letters must be lower case to compare
+//     var userGuess = userChoice.toLowerCase();
+//     console.log(userGuess);
 
-    if (j < 13) {
+//     //Array for guesses so far will display as Upper Case.
+//     // var guessesUpper = userChoice.toUpperCase();
+//     guessesSoFar.push(userGuess);
 
-        //Compare every letter in the array with the letter the user selected
-        for (var i = 0; i < computerGuess.length; i++) {
-            var letter = computerGuess.charAt(i);
+//     if (j < 13) {
 
-            if (userGuess === letter) {
-                // position of the letter in the array
-                var position = computerGuess.indexOf(letter);
-                console.log(position);
-                currentWord.push(userGuess);
-                // number of times the letter is in the word
-                var number = computerGuess.match(letter).length;
-                console.log(number);
-                // push only the amount of letters that are in the word chosen by the computer
-            }
-        }
+//         //Compare every letter in the array with the letter the user selected
+//         for (var i = 0; i < computerGuess.length; i++) {
+//             var letter = computerGuess.charAt(i);
 
-        guessesLeft--;
-        j++;
+//             if (userGuess === letter) {
+//                 // position of the letter in the array
+//                 var position = computerGuess.indexOf(letter);
+//                 console.log(position);
+//                 currentWord.push(userGuess);
+//                 // number of times the letter is in the word
+//                 var number = computerGuess.match(letter).length;
+//                 console.log(number);
+//                 // push only the amount of letters that are in the word chosen by the computer
+//             }
+//         }
 
-        // if the user guesses all the letters wins++. 
-        // if (currentWord === computerGuess) {
-        //     wins++;
-        //     j = 0;
-        //     guessesLeft = 13;
-        //     guessesSoFar = [];
-        //     computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-        //     currentWord = [];
-        // }
+//         guessesLeft--;
+//         j++;
 
-        // if the guesses reach to 0 the game will start over again
-        if (guessesLeft === 0) {
-            j = 0;
-            guessesLeft = 13;
-            guessesSoFar = [];
-            computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-            currentWord = [];
-            console.log(computerGuess);
-        }
-    }
+//         // if the user guesses all the letters wins++. 
+//         // if (currentWord === computerGuess) {
+//         //     wins++;
+//         //     j = 0;
+//         //     guessesLeft = 13;
+//         //     guessesSoFar = [];
+//         //     computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+//         //     currentWord = [];
+//         // }
 
-    //display variables 
-    winsText.textContent = "Wins: " + wins;
-    currentWordText.textContent = "Current Word: " + currentWord.join(" ");
-    guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
-    guessesSoFarText.textContent = "Guesses So Far: " + guessesSoFar.join(", ");
-};
+//         // if the guesses reach to 0 the game will start over again
+//         if (guessesLeft === 0) {
+//             j = 0;
+//             guessesLeft = 13;
+//             guessesSoFar = [];
+//             computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+//             currentWord = [];
+//             console.log(computerGuess);
+//         }
+//     }
+
+//     //display variables 
+//     winsText.textContent = "Wins: " + wins;
+//     currentWordText.textContent = "Current Word: " + currentWord.join(" ");
+//     guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
+//     guessesSoFarText.textContent = "Guesses So Far: " + guessesSoFar.join(", ");
+// };
 
 
