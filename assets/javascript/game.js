@@ -14,8 +14,11 @@ var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.l
 console.log(computerGuess);
 var wordLength = computerGuess.length;
 console.log(wordLength);
-var underscore = " _ ".repeat(wordLength);
+// var underscore = " _ ".repeat(wordLength);
+// console.log(underscore);
+var underscore = [];
 console.log(underscore);
+
 // }
 // //call the function computer
 // computer();
@@ -51,9 +54,8 @@ document.onkeyup = function (event) {
 
         if (userGuess === letter) {
             var position = computerGuess.indexOf(letter);
-            console.log(position);
-            var word = underscore.replaceAt(" _ ", position, letter);
-            console.log(word);
+            underscore[position] = userGuess;
+            console.log(underscore);
         }
     }
     guessesLeft--;
