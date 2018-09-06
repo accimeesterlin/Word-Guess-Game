@@ -60,24 +60,19 @@ var submit = function () {
         guessesText.textContent = guessesSoFar.join(", ");
         outputText.textContent = output;
         output = "";
+
+        //if the letter is already in the array the guesses shouldn't decreased
         guesses--;
 
         if (length === 0) {
             win++;
             winText.textContent = "CONGRATULATIONS";
-            // computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-            // word = computerGuess.split("");
-            // console.log(word);
-            // output = "";
-            // guessesSoFar = [];
-            // wordLength = computerGuess.length;
-            // display = [wordLength];
-            // console.log(display);
-            // display = " _ ";
+            // restart();
             myFunction();
         }
         else if (guesses < 1) {
-            winText.textContent = "You LOST";
+            winText.textContent = "GAME OVER";
+            //restart();
             myFunction();
         }
         else {
