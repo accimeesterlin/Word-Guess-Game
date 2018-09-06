@@ -1,82 +1,92 @@
-
-//initialization variables
-var guessesLeft = 13;
-var guessesSoFar = [];
-var wins = 0;
-// var currentWord = [];
-
-//hagman words
-// function computer() {
 var computerChoices = ["venezuela", "finland", "russia", "greece", "brazil", "mexico", "argentina", "turkey", "japan", "sweden", "dubai", "china", "peru", "germany", "chile", "thailand", "india", "switzerland"];
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)].split("");
-var wordLength = computerGuess.length + 1;
-var underscore = [];
-var under = " _ ".repeat(computerGuess.length);
-underscore.push(under);
-// }
-// //call the function computer
-// computer();
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+console.log(computerGuess);
+var word = computerGuess.split("");
+var wordLength = computerGuess.length;
+var display = [wordLength];
+var length = wordLength;
+var guesses = 13;
+var output = "";
+var guessesSoFar = [];
+var win = 0;
 
-// variables to hold references
-var winsText = document.getElementById("wins");
-var currentWordText = document.getElementById("currentWord");
+//reset
+var restart = function () {
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    var word = computerGuess.split("");
+    var wordLength = computerGuess.length;
+    var display = [wordLength];
+    var length = wordLength;
+    var guesses = 13;
+    var guessesSoFar= [];
+    var output = "";
+}
+
+// reload page. I used this as a way to restart the game because it doesn't work only restarting the variables
+function myFunction() {
+    location.reload();
+}
+//variables to hold references
+var outputText = document.getElementById("output");
+var winText = document.getElementById("win");
 var guessesLeftText = document.getElementById("guessesLeft");
-var guessesSoFarText = document.getElementById("guessesSoFar");
+var guessesText = document.getElementById("guesses");
 
-
-//onkeyup for the user variable
-document.onkeyup = function (event) {
-
-    //user letter choice
-    var userChoice = event.key;
-
-    //Array for guesses so far will display as Upper Case.
-    var guessesUpper = userChoice.toUpperCase();
-    guessesSoFar.push(guessesUpper);
-
-    // All letters must be lower case to compare
-    var userGuess = userChoice.toLowerCase();
-    console.log(userGuess);
-
-    //Compare every letter in the array with the letter the user selected
-
+var checker = function () {
     for (var i = 0; i < computerGuess.length; i++) {
-        var letter = computerGuess[i];
+        display[i] = " _ ";
+        output = output + display[i];
+    }
+    outputText.textContent = output;
+    output = "";
+}
 
-        if (userGuess === letter) {
-            underscore[i] = userGuess;
-            wordLength--;
-        }
-        else if (underscore[i] === " _ ") //if statement to see if the space is occupied for an underscore instead of a letter 
-        {
-            underscore[i] = " _ ";
-        }
+var submit = function () {
+    output = "";
 
-        if (wordLength === 0) {
-            wins++;
-            guessesLeft = 13;
-            guessesSoFar = [];
-            computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)].split("");
-            console.log(computerGuess);
-            underscore = [];
+    document.onkeyup = function (event) {
+        var userChoice = event.key;
+        userChoice = userChoice.toLowerCase();
+
+        for (var j = 0; j < computerGuess.length; j++) {
+            if (userChoice === word[j]) {
+                display[j] = userChoice;
+                length--;
+            }
+            output = output + display[j] + " ";
+
+        }
+        guessesSoFar.push(userChoice.toUpperCase());
+        guessesText.textContent = guessesSoFar.join(", ");
+        outputText.textContent = output;
+        output = "";
+        guesses--;
+
+        if (length === 0) {
+            win++;
+            winText.textContent = "CONGRATULATIONS";
+            // computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+            // word = computerGuess.split("");
+            // console.log(word);
+            // output = "";
+            // guessesSoFar = [];
+            // wordLength = computerGuess.length;
+            // display = [wordLength];
+            // console.log(display);
+            // display = " _ ";
+            myFunction();
+        }
+        else if (guesses < 1) {
+            winText.textContent = "You LOST";
+            myFunction();
+        }
+        else {
+            guessesLeftText.textContent = guesses;
         }
     }
-
-    guessesLeft--;
-
-    if (guessesLeft === 0){
-        underscore= [];
-        guessesLeft = 13;
-        guessesSoFar = [];
-        computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)].split("");
-        wordLength = computerGuess.length;
-        under = " _ ".repeat(wordLength);
-        underscore.push(under);
-    }
-
-    winsText.textContent = "Wins: " + wins;
-    currentWordText.textContent = "Current Word: " + underscore.join(" ");
-    guessesSoFarText.textContent = "Guesses So Far: " + guessesSoFar.join(", ");
 };
 
-
+window.onload = function () {
+    checker();
+    submit();
+}
