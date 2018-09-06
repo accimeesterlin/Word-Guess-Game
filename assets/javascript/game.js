@@ -56,7 +56,8 @@ document.onkeyup = function (event) {
             wordLength--;
             console.log(wordLength);
         }
-        else {
+        else //if statement to see if the space is blank 
+        {
             underscore[i] = " _ ";  
         }
         
