@@ -15,10 +15,10 @@ console.log(computerGuess);
 var wordLength = computerGuess.length;
 console.log(wordLength);
 var underscore = [];
-console.log(underscore);
+// console.log(underscore);
 var under = " _ ".repeat(wordLength);
 underscore.push(under);
-console.log(underscore);
+// console.log(underscore);
 
 // }
 // //call the function computer
@@ -47,18 +47,26 @@ document.onkeyup = function (event) {
 
     //Compare every letter in the array with the letter the user selected
 
-    for (var i = 0; i < wordLength; i++) {
+    for (var i = 0; i < computerGuess.length; i++) {
         var letter = computerGuess[i];
 
         if (userGuess === letter) {
-            var position = computerGuess.indexOf(letter);
-            underscore[position] = userGuess;
-            // console.log(underscore);
+            // var position = computerGuess.indexOf(letter);
+            underscore[i] = userGuess;
+            wordLength--;
+            console.log(wordLength);
+        }
+        else {
+            underscore[i] = " _ ";  
+        }
+        
+
+        if (wordLength === 0) {
+            console.log("Hello");
         }
     }
 
     guessesLeft--;
-    console.log(guessesLeft);
 
     // // if (guessesLeft === 0){
     // //     guessesLeft = 13;
