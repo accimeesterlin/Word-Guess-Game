@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+}
+
+#instructions {
+    font-size: 32px;
+    font-family: "Lobster";
+    margin-left: 30px; 
+    margin-top: 30px;
+    text-align: center;
+}
+.image {
+    opacity: 0.5;
+    width: 24.5%;
+    height: 200px;
+}
+
+html {
+    margin: 10px;
+}
+
+.information {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    border: 2px solid pink;
+    line-height: 30px;
+    overflow: auto;
+}
+
+#image2 {
+    float: left;
+}
+
