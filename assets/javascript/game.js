@@ -12,14 +12,14 @@ var win = 0;
 
 //reset
 var restart = function () {
-    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    var word = computerGuess.split("");
-    var wordLength = computerGuess.length;
-    var display = [wordLength];
-    var length = wordLength;
-    var guesses = 13;
-    var guessesSoFar= [];
-    var output = "";
+   computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    word = computerGuess.split("");
+    wordLength = computerGuess.length;
+    display = [wordLength];
+    length = wordLength;
+    guesses = 13;
+    guessesSoFar= [];
+    output = "";
 }
 
 // reload page. I used this as a way to restart the game because it doesn't work only restarting the variables
